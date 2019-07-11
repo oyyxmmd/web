@@ -1,0 +1,42 @@
+.bold{
+    font: 30px;
+    width: 200px;
+    height: 50px;
+    background:antiquewhite;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.container1{
+    width: 100%;
+    background-color: darkgoldenrod;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+.container2{
+    width: 100%;
+    background-color: darkgoldenrod;
+    display: flex;
+    flex-wrap: wrap;
+}
+.container3{
+    width: 100%;
+    background-color: darkgoldenrod;
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+.flext1{
+    display: flex;
+    flex-wrap: wrap;
+}
+.flext1>div{
+    width: 30%;  
+    background-color: bisque;
+    min-width: 200px;
+}
+.flext1>div:first-child{
+   
+}
+
+
