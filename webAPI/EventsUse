@@ -1,0 +1,9 @@
+添加事件、 修改修改事件 、 删除事件
+
+问题:
+    说一说常用两种事件添加方法的不同 ？ 单个 和 多个 的区别
+
+事件开头（onClick、onMose......等等）
+    1   element.事件名称 = func（）{}   
+    2   element.addEvenListener(’事件名' , func)
+    

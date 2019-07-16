@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width:400px;
+            height: 400px;
+            background-color: grey;
+            float: left;
+            margin-right: 20px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box1">
+       <!-- <select name="" id="" multiple></select> -->
+    </div>
+    <div class="box2"></div>
+    <button id="left">到右边</button>
+    <button id="right">到左边</button>
+    <button id="leftlit">一部分到右边</button>
+    <button id="rightlit">一部分到左边</button>
+    <script>
+        var arr = ['苹果','西瓜','豆子','萝卜','葡萄','栗子'];
+        var box1 = document.getElementsByClassName('box1')[0];
+        var box2 = document.getElementsByClassName('box2')[0];
+        var i = 0 ;
+        
+        var sel = document.createElement('select');
+        var sel2 = document.createElement('select');
+        sel.setAttribute('multiple','multiple');
+        sel.style.width = '100%';
+        sel.style.fontSize = '40px';
+        sel.style.height = '400px';
+        sel2.setAttribute('multiple', 'multiple');
+        sel2.style.width = '100%';
+        sel2.style.fontSize = '40px';
+        sel2.style.height = '400px';
+        // var sel2 = Object.assign({},sel);
+        // loop add
+        box2.appendChild(sel2);
+        while(i<arr.length){
+
+            var ol = document.createElement('option');
+            ol.innerHTML = arr[i];
+            sel.appendChild(ol);
+            i++;
+        }
+        box1.appendChild(sel);
+        // 
+        var btn1=document.getElementById('left');
+        var btn2= document.getElementById('right');
+        var btn3 = document.getElementById('leftlit');
+        var btn4 = document.getElementById('rightlit');
+        btn1.addEventListener('click',function(){
+            for(let i = sel.children.length;i>=0;i--){
+                // 特别注意 这里是变化的，所以取值就从后面取 
+                sel2.append(sel.children[i]);
+                console.log(i , sel.children[i]);
+            }
+            
+        })
+        btn2.addEventListener('click', function () {
+            for (let i = sel2.children.length; i >= 0; i--) {
+                sel.append(sel2.children[i]);
+            }
+        })
+        // 1.获取选中的option
+        // 2.apend出去
+        btn3.addEventListener('click', function () {
+            
+            for (let i = sel.children.length; i >= 0; i--) {
+                // 特别注意 这里是变化的，所以取值就从后面取 
+                try{
+                    if (sel.children[i - 1].selected) {
+                        sel2.appendChild(sel.children[i - 1]);
+
+                    }
+                }catch(e){
+                    console.log(e);
+                }
+               
+            }
+            
+        })
+        btn4.addEventListener('click', function () {
+            for (let i = sel2.children.length; i >= 0; i--) {
+                // 特别注意 这里是变化的，所以取值就从后面取 
+                try{
+                    if (sel2.children[i - 1].selected) {
+                        sel.appendChild(sel2.children[i - 1]);
+
+                    }
+                 }catch(e){
+                    console.log(e);
+                 }
+            }
+        })
+
+    </script>
+</body>
+</html>
