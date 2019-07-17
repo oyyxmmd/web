@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            position: absolute;
+            
+        }
+        .top{
+            height: 30px;
+            background-color: black;
+            color: white;
+            padding: 0px 10px 0px 10px;
+            
+        }
+        .body{
+            height: 370px;
+            background-color: beige;
+
+        }
+        .right{
+            float: right;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        .disp{
+            font-size: 30px;
+            color: blueviolet ;
+            
+        }
+        .hidden{
+            display: none;
+        }
+        .open{
+            display: inherit;
+        }
+        h1{
+            margin: 0px
+        }
+    </style>
+</head>
+<body>
+
+    
+    点击按钮隐藏
+    <a href="" id="open" class="disp">点我显示</a>
+    <div class="box" >
+        <div class="top">top
+            <a href="" class="right" id="close">x</a>
+        </div>
+        <div class="body">
+            <h1>body</h1>
+        </div>
+
+    </div>
+    <script src="js/move_window.js"></script>
+</body>
+</html>

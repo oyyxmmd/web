@@ -11,3 +11,5 @@
         Event.target || Event.srcElement进行赋值操作
     Event.target
     Event.srcElement
+页面位置
+    处理

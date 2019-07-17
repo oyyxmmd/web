@@ -45,7 +45,7 @@
             console.log(e.clientY);
         })
 
-        conc.addEventListener('mousemove',function(e){
+        document.addEventListener('mousemove',function(e){
             console.log('mousemove');
             box.style.top = e.clientY-15 + 'px';
             box.style.left = e.clientX-15 + 'px';

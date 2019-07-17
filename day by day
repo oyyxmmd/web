@@ -1,0 +1,6 @@
+2019.7.18
+    今天写的移动窗口案例：/webAPI/pro/move_window
+    解决问题：1.窗口移动前要储存原有的 位置参数，方便后面计算。否则会计算错误  看log
+            2.琢磨最久的问题历时一小时有余：事件冒泡没法阻止，测试方法 stopPropagation(); cacelBullue = true;
+                原因：事件名称没有对应，原本应该是取消onmouseDown的事件冒泡
+                    写成了 onclick 所以阻止冒泡不成功
