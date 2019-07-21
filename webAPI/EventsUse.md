@@ -23,3 +23,6 @@
 键盘事件
     keyDown、keyUp
     获取键盘输入的内容 e.keyCode 获取ascill码判断
+事件冒泡对比
+    冒泡：mouseover、mouseout
+    不冒泡：mouseenter、mouseleave

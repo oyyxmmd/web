@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        .box1{
+            float: left;
+            background: url('images/zhaoyy.jpeg');
+            background-size: 400px;
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+         .box2{
+            float: left;
+            background-color: aqua;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            display:none;
+        }
+        .littleBox{
+            background-color: antiquewhite ;
+            opacity:0.7;
+            width: 180px;
+            height: 180px;
+            display: none;
+            position:absolute;
+        }
+        .display{
+            display: block;
+        }
+        .hidden{
+            display: none;
+        }
+        #img{
+            position: absolute;
+            left: -300px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box1" id="box1">
+        <div class="littleBox"></div>
+    </div>
+    <div class="box2" id="box2">
+        <img src="images/zhaoyy.jpeg" alt="" srcset="" width="700px" id="img">
+    </div>
+    <script>
+    // 项目说明：鼠标在左边box1移动时，右边显示预览图
+    /*
+    1.鼠标move到box  显示小box遮照
+    2.继续move  小box跟随，放大镜根据比例显示
+    3.设置box 移动的范围
+    4.鼠标离开 隐藏
+    */
+    var box1 = document.querySelector('#box1');
+    var box2 = document.querySelector('.box2');
+    var littleBox = document.querySelector('.littleBox');
+    var img = document.querySelector('#img');
+        // onmous
+    box1.addEventListener('mousemove',movet); 
+    box1.addEventListener('mouseleave', removeE); 
+    function movet(e){
+        
+        littleBox.classList.add('display');
+        box2.classList.add('display');
+        console.log(littleBox.classList);
+
+        // 鼠标坐标
+        let x = e.pageX;
+        let y = e.pageY;
+        // 大盒子坐标
+        let boxX = x-box1.offsetLeft;
+        let boxY = y-box1.offsetTop; 
+        // 小盒子坐标 = 鼠标坐标 - 半个盒子宽度
+        let ltx= boxX - littleBox.offsetWidth/2;
+        let lty= boxY - littleBox.offsetHeight/2;
+        // 4.判断范围
+        lty = lty < 0 ? 0:lty;
+        ltx = ltx < 0 ? 0:ltx;
+        lty = lty > box1.clientHeight - littleBox.offsetHeight ? box1.clientHeight - littleBox.offsetHeight : lty;
+        ltx = ltx > box1.clientWidth - littleBox.offsetWidth ? box1.clientHeight - littleBox.offsetHeight : ltx;
+
+        littleBox.style.left = ltx + 'px';
+        littleBox.style.top = lty + 'px';
+        // 设置放大box
+        // 最大移动距离比值
+        let maskX = box1.offsetWidth - littleBox.offsetWidth;
+        let imgX = -(box2.offsetWidth - img.offsetWidth);
+
+        img.style.left = (-ltx * (imgX / maskX))+'px';
+        img.style.top = (-lty * (imgX / maskX))+'px';
+        console.log(ltx,lty,imgX,maskX,boxX,boxY,img.offsetTop,img.offsetLeft);
+        
+   }
+   function removeE(){
+       littleBox.classList.remove('display');
+       box2.classList.remove('display');
+   }
+//    box1.addEventListener('mouseleave', function(){
+//        box1.removeEventListener('mousemove');
+//        box1.classList.remove('display');
+//    });
+
+    </script>
+</body>
+</html>
